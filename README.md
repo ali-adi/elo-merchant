@@ -1,31 +1,43 @@
-# Elo Merchant Category Recommendation Project
+# 🏆 Elo Merchant Category Recommendation Project
 
-This repository contains the code and data for the **Elo Merchant Category Recommendation** project. The project is divided into two main parts: **data handling** and **model training**. Data handling is performed using Jupyter notebooks to merge, clean, and split the data, while model training is done using a separate notebook that includes **checkpointing, logging, and evaluation**.
+Welcome to the **Elo Merchant Category Recommendation** project! This repository contains everything you need to process data, train models, and evaluate performance effectively. 🚀
+
+---
 
 ## 📂 Folder Structure
 
-The project is structured as follows:
-
 ```
 .
-├── 1-data-handling
-│   ├── 1-data-merging-train.ipynb    # Merges training data with additional sources
-│   ├── 2-data-merging-test.ipynb     # Merges test data with additional sources
-│   ├── 3-check-data.ipynb            # Performs exploratory data analysis (EDA) and data quality checks
-│   └── 4-split-data.ipynb            # Splits the final dataset into train/validation sets
-├── 2-train
-│   ├── runs                          # Folder where training outputs (checkpoints, logs, plots, predictions) are saved.
-│   │   └── [datetime folders]        # Each training run creates a new folder (named with the current datetime)
-│   └── train-test.ipynb              # Notebook for model training and evaluation
-└── env                               # Virtual environment folder (not tracked in Git)
-
-# External Datasets (Not included in repository)
-../datasets
-│   ├── final_dataset.parquet         # Final aggregated dataset after merging all sources
-│   ├── test.parquet                  # Test dataset for prediction (without target)
-│   └── split
-│       ├── train.parquet             # Training split of the final dataset (with target)
-│       └── valid.parquet             # Validation split of the final dataset (with target)
+├── 📁 raw-data/                     # 📜 Original dataset files (not tracked by Git)
+│   ├── 📄 Data_Dictionary.xlsx
+│   ├── 📄 historical_transactions.csv
+│   ├── 📄 merchants.csv
+│   ├── 📄 new_merchant_transactions.csv
+│   ├── 📄 sample_submission.csv
+│   ├── 📄 test.csv
+│   ├── 📄 train.csv
+│
+├── 📁 datasets/                      # 🔄 Processed datasets (not tracked by Git)
+│   ├── 🗂️ final_dataset.parquet
+│   ├── 🗂️ test.parquet
+│   ├── 📂 split/
+│   │   ├── 🗂️ train.parquet
+│   │   ├── 🗂️ valid.parquet
+│
+├── 📁 elo-merchant/                  # 🔥 Project source code and notebooks
+│   ├── 📖 README.md                  # 📌 Project documentation
+│   ├── 📋 requirements.txt           # 🔧 Dependencies for the project
+│   ├── 📁 env/                        # 🏗️ Virtual environment directory (not tracked by Git)
+│   ├── 📂 1-data-handling/           # 📊 Data preparation and processing
+│   │   ├── 📜 1-data-merging-train.ipynb
+│   │   ├── 📜 2-data-merging-test.ipynb
+│   │   ├── 📜 3-check-data.ipynb
+│   │   ├── 📜 4-split-data.ipynb
+│   │
+│   ├── 📂 2-train/                   # 🎯 Training scripts and logs
+│   │   ├── 📜 train-test.ipynb
+│   │   ├── 📁 runs/                   # 📊 Training logs & outputs (not tracked by Git)
+│   │   │   ├── 📂 [datetime]/         # 🕒 Each training run has a separate folder with current datetime
 ```
 
 ---
@@ -37,7 +49,7 @@ The project is structured as follows:
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/your-username/elo-merchant-recommendation.git
-   cd elo-merchant-recommendation
+   cd elo-merchant
    ```
 
 2. **Create and activate a virtual environment:**
@@ -61,64 +73,57 @@ The project is structured as follows:
 
 ### 📊 Data Handling Workflow
 
-- **Step 1:** Ensure the dataset is placed in the correct external directory (`../datasets`).
-- **Step 2:** Run the notebooks in `1-data-handling`:
-  - `1-data-merging-train.ipynb`: Merges training data
-  - `2-data-merging-test.ipynb`: Merges test data
-  - `3-check-data.ipynb`: Performs exploratory data analysis (EDA)
-  - `4-split-data.ipynb`: Splits the final dataset into train and validation sets
-  
-- **Step 3:** The cleaned datasets will be stored in `../datasets/split/`
+1. 📂 **Ensure the dataset is placed in `raw-data/`**.
+2. 🚀 **Run the notebooks in `1-data-handling/` sequentially:**
+   - 🏗️ `1-data-merging-train.ipynb` → Merges training data.
+   - 🔗 `2-data-merging-test.ipynb` → Merges test data.
+   - 🔍 `3-check-data.ipynb` → Performs exploratory data analysis (EDA).
+   - ✂️ `4-split-data.ipynb` → Splits the final dataset into train and validation sets.
+3. 📁 Processed datasets will be saved in `datasets/`.
 
 ---
 
 ### 🏋️‍♂️ Training the Model
 
-- **Step 1:** Open `2-train/train-test.ipynb`
-- **Step 2:** Run the notebook to train and evaluate the model
-- **Step 3:** Training outputs will be saved automatically in `2-train/runs/` with a unique datetime folder
+1. 📖 Open `2-train/train-test.ipynb`.
+2. 🚀 Run the notebook to train and evaluate the model.
+3. 📂 Training outputs will be stored in `2-train/runs/`, with a new folder for each run based on the **current datetime**.
 
 ---
 
 ### 🔍 Evaluating the Model
 
-- **Saved Model Checkpoints:** Model weights are saved automatically in `runs/[datetime]/model_checkpoint.pth`
-- **Training Logs & Plots:** Loss logs and plots are saved in `runs/[datetime]/`
-- **Test Predictions:** After training, test predictions can be generated and saved in `runs/[datetime]/test_predictions.csv`
+- 💾 **Model Checkpoints:** Automatically saved in `2-train/runs/[datetime]/model_checkpoint.pth`.
+- 📊 **Training Logs & Plots:** Stored in `2-train/runs/[datetime]/`.
+- 📜 **Test Predictions:** Saved in `2-train/runs/[datetime]/test_predictions.csv`.
 
 ---
 
 ### ✅ Best Practices
 
-- **Use a virtual environment** to keep dependencies clean.
-- **Exclude large files** from Git by adding them to `.gitignore`:
+- 🔄 Use a **virtual environment** to manage dependencies.
+- 🚫 Exclude large files from Git using `.gitignore`:
   ```
   env/
   2-train/runs/
   *.pyc
   __pycache__/
   ```
-- **Document your changes** using clear commit messages.
-- **Use Git LFS** for large datasets if needed:
-  ```bash
-  git lfs install
-  git lfs track "*.parquet"
-  ```
 
 ---
 
 ## 📜 License
 
-Add your license information here.
+📌 Add your license information here.
 
 ---
 
 ## 👏 Acknowledgements
 
-Credit any **libraries, resources, or contributors** used in this project.
+🎉 Credit any **libraries, resources, or contributors** used in this project.
 
 ---
 
-🚀 Happy Coding! 🎯
+🚀 **Happy Coding!** 🎯
 
 
