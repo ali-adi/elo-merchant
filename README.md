@@ -2,6 +2,10 @@
 
 Welcome to the **Elo Merchant Category Recommendation** project! This repository contains everything you need to process data, train models, and evaluate performance effectively. 🚀
 
+**Dataset Source:** [Kaggle - Elo Merchant Category Recommendation](https://www.kaggle.com/c/elo-merchant-category-recommendation)
+
+📂 **Download the dataset from Kaggle and place it inside `raw-data/` before running the notebooks.**
+
 ---
 
 ## 📂 Folder Structure
@@ -73,7 +77,7 @@ Welcome to the **Elo Merchant Category Recommendation** project! This repository
 
 ### 📊 Data Handling Workflow
 
-1. 📂 **Ensure the dataset is placed in `raw-data/`**.
+1. 📂 **Ensure the dataset from Kaggle is placed in `raw-data/`**.
 2. 🚀 **Run the notebooks in `1-data-handling/` sequentially:**
    - 🏗️ `1-data-merging-train.ipynb` → Merges training data.
    - 🔗 `2-data-merging-test.ipynb` → Merges test data.
@@ -109,18 +113,6 @@ Welcome to the **Elo Merchant Category Recommendation** project! This repository
   *.pyc
   __pycache__/
   ```
-
----
-
-## 📜 License
-
-📌 Add your license information here.
-
----
-
-## 👏 Acknowledgements
-
-🎉 Credit any **libraries, resources, or contributors** used in this project.
 
 ---
 
